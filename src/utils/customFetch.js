@@ -4,7 +4,7 @@ import applyMockAdapter from './mockAdapter';
 const useMock = false;
 
 const customFetch = axios.create({
-  baseURL: 'https://product-feedback-app-server.cyclic.app/api/v1',
+  baseURL: 'https://product-feedback-app-server.herokuapp.com/api/v1',
   timeout: 10000,
   withCredentials: true,
   headers: {
