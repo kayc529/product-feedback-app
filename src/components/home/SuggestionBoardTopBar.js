@@ -18,7 +18,7 @@ const SuggestionBoardTopBar = () => {
     }
 
     toastMessage('You must login to create a feedback');
-    navigate('/login');
+    navigate('/login?return_to=/newfeedback');
   };
 
   return (

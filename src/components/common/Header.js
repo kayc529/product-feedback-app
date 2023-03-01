@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Button from './Button';
 import { ButtonColors } from '../../data/colors';
 import { logoutUser } from '../../features/user/userSlice';
@@ -9,10 +9,11 @@ const Header = () => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const onLoginRegisterClick = () => {
     if (!user) {
-      navigate('/login');
+      navigate(`/login?return_to=${pathname}`);
       return;
     }
   };

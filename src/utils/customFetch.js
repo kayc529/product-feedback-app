@@ -1,12 +1,14 @@
 import axios from 'axios';
 import applyMockAdapter from './mockAdapter';
 
-const useMock = false;
+const useMock = process.env.REACT_APP_USE_MOCK === 'true';
 
 const customFetch = axios.create({
-  // baseURL: 'https://product-feedback-app-server.herokuapp.com/api/v1',
-  baseURL: 'https://product-feedback-app-server.cyclic.app/api/v1',
-  timeout: 10000,
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? process.env.REACT_APP_BASE_URL_PROD
+      : process.env.REACT_APP_BASE_URL_DEV,
+  timeout: process.env.REACT_APP_API_CALL_TIMEOUT,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

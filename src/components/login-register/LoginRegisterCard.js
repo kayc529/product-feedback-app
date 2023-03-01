@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MIN_USERNAME_LENGTH, MIN_PASSWORD_LENGTH } from '../../data/constants';
-import { Button, InputRow } from '../common';
+import { Button, InputRow, PasswordValidation } from '../common';
 import { validateEmail } from '../../utils/validationHelper';
 import { useDispatch } from 'react-redux';
 import { loginUser, registerUser } from '../../features/user/userSlice';
@@ -160,13 +160,16 @@ const LoginRegisterCard = () => {
           onInputChange={onInputChange}
         />
         <InputRow
+          key='password'
           text='password'
           name='password'
+          inputType='password'
           maxLength={16}
           value={input.password.value}
           isError={input.password.isError}
           errorMsg={input.password.errorMsg}
           onInputChange={onInputChange}
+          isPasswordField={true}
         />
       </>
     );
@@ -185,8 +188,10 @@ const LoginRegisterCard = () => {
           onInputChange={onInputChange}
         />
         <InputRow
+          key='username'
           text='username'
           name='username'
+          inputType='text'
           value={input.username.value}
           isError={input.username.isError}
           errorMsg={input.username.errorMsg}
@@ -216,8 +221,12 @@ const LoginRegisterCard = () => {
           value={input.password.value}
           isError={input.password.isError}
           errorMsg={input.password.errorMsg}
+          isPasswordField={true}
           onInputChange={onInputChange}
         />
+        <div className='pb-4'>
+          <PasswordValidation password={input.password.value} />
+        </div>
         <InputRow
           text='retype password'
           name='retype'
@@ -233,7 +242,7 @@ const LoginRegisterCard = () => {
   };
 
   return (
-    <div className='w-newFeedbackMobile px-6 py-8 mx-auto rounded-card bg-white flex flex-col items-center jusitfy-center md:w-newFeedback'>
+    <div className='w-newFeedbackMobile px-6 py-8 mb-20 mx-auto rounded-card bg-white flex flex-col items-center jusitfy-center md:w-newFeedback'>
       <h1 className='text-h1 text-darkBlue1 font-bold pb-4'>
         {isLogin ? 'Login' : 'Register'}
       </h1>

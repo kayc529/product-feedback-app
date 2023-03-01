@@ -39,7 +39,6 @@ const SuggestionCard = ({
       toastMessage('You must login to upvote a suggestion', TOAST_TYPE.DEFAULT);
       return;
     }
-    console.log('upvote');
     dispatch(upvoteSuggestion(id));
   };
 

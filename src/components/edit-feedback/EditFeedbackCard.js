@@ -77,6 +77,7 @@ const EditFeedbackCard = () => {
 
   const cancel = (e) => {
     e.preventDefault();
+    navigate(-1);
   };
 
   const deleteFeedback = async (e) => {

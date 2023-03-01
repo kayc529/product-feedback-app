@@ -41,6 +41,7 @@ const CreateNewFeedbackCard = () => {
   };
   const cancel = (e) => {
     e.preventDefault();
+    navigate(-1);
   };
 
   const onCategoryChange = (index) => {

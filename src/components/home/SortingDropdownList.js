@@ -13,8 +13,10 @@ const SortingDropdownList = ({ options }) => {
       let index = options.findIndex((option) => option.id === sortingQuery);
       index = index !== -1 ? index : 0;
       setChoseOptionIndex(index);
+    } else {
+      setChoseOptionIndex(0);
     }
-  }, []);
+  }, [searchParams]);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);

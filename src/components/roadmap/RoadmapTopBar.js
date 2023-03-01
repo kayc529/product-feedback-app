@@ -10,6 +10,7 @@ const RoadmapTopBar = () => {
   const addNewFeedback = () => {
     if (!user) {
       toastMessage('You must login to create a suggestion', TOAST_TYPE.DEFAULT);
+      navigate('/login?return_to=/newfeedback');
       return;
     }
     navigate('/newfeedback');
